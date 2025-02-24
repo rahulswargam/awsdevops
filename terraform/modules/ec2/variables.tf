@@ -98,7 +98,5 @@ variable "tags" {
   type        = map(string)
   default = {
     createdBy   = "Terraform"
-    project     = var.project_name
-    environment = var.environment
   }
 }
