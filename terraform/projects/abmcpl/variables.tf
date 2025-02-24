@@ -9,3 +9,9 @@ variable "user_data" {
   type        = string
   description = "user data path"
 }
+
+variable "project_name" {
+  default     = "abmcpl"
+  type        = string
+  description = "Name of the Project"
+}
