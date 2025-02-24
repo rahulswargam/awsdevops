@@ -12,7 +12,7 @@ resource "aws_instance" "devops_services" {
   tags = merge(
     var.tags,
     {
-      Name        = "devops-instance-${var.project_name}"
+      Name        = "${var.project_name}-instance"
       Project     = var.project_name
       Environment = var.environment
     }
