@@ -5,13 +5,6 @@ variable "aws_region" {
   default     = ""
 }
 
-# EC2 Instance Type
-variable "instance_type" {
-  description = "The Instance type for the EC2 instance"
-  type        = string
-  default     = "t2.micro"
-}
-
 # SSH Key Pair Name
 variable "key_name" {
   description = "The name of the SSH Key Pair to use for EC2 Instance Access"
@@ -19,11 +12,10 @@ variable "key_name" {
   default     = ""
 }
 
-# User Data Script
-variable "user_data" {
-  description = "Path to the User Data Script for EC2 Instance Initialization"
-  type        = string
+variable "keypair_name" {
   default     = ""
+  type        = string
+  description = "keypair name"
 }
 
 # Security Group Name
@@ -75,17 +67,38 @@ variable "cidr_blocks" {
   default     = ["0.0.0.0/0"]
 }
 
-# Tags for AWS Resources
+# EC2 Instance Type
+variable "instance_type" {
+  description = "The Instance type for the EC2 instance"
+  type        = string
+  default     = "t2.micro"
+}
+
+# User Data Script
+variable "user_data" {
+  description = "Path to the User Data Script for EC2 Instance Initialization"
+  type        = string
+  default     = ""
+}
+
+variable "project_name" {
+  description = "The name of the Project"
+  type        = string
+  default     = "Jenkins"
+}
+
+variable "environment" {
+  description = "The Environment Type"
+  type        = string
+  default     = "dev"
+}
+
 variable "tags" {
   description = "Key-value Pairs of Tags to Assign to AWS Resources"
   type        = map(string)
   default = {
-    createdBy = "Terraform"
+    createdBy   = "Terraform"
+    project     = var.project_name
+    environment = var.environment
   }
-}
-
-variable "keypair_name" {
-  default     = ""
-  type        = string
-  description = "keypair name"
 }
