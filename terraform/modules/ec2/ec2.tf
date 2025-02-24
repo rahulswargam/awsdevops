@@ -8,5 +8,13 @@ resource "aws_instance" "devops_services" {
   key_name               = data.aws_key_pair.devops_keypair.key_name
   vpc_security_group_ids = [aws_security_group.devops_sg.id]
   user_data              = file(var.user_data)
-  # tags = var.tags
+
+  tags = merge(
+    var.tags,
+    {
+      Name        = "devops-instance-${var.project_name}"
+      Project     = var.project_name
+      Environment = var.environment
+    }
+  )
 }
