@@ -10,11 +10,10 @@ sudo yum install wget -y
 sudo yum install fontconfig java-17-openjdk
 
 # INSTALL JENKINS:
-sudo wget -O /etc/yum.repos.d/jenkins.repo \
-    https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
 sudo yum upgrade
-sudo yum install jenkins
+sudo yum install jenkins -y
 sudo systemctl daemon-reload
 
 # INSTALL GIT:
@@ -27,8 +26,4 @@ sudo yum install maven -y
 sudo systemctl daemon-reload
 sudo systemctl start jenkins
 sudo systemctl enable jenkins
-
-# DISPLAY INITIAL ADMIN PASSWORD:
 echo "Jenkins Installation Completed"
-echo "Retrieving the Initial Admin Password"
-sudo cat /var/lib/jenkins/secrets/initialAdminPassword
