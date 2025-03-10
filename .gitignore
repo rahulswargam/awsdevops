@@ -2,3 +2,4 @@
 
 docker/jenkins-server/credentials.env
 .idea/
+**/.DS_Store
