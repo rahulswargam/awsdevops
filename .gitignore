@@ -1,0 +1,4 @@
+# Ignore files
+
+docker/jenkins-server/credentials.env
+.idea/
