@@ -5,6 +5,8 @@ import com.cloudbees.plugins.credentials.domains.*
 import com.cloudbees.plugins.credentials.impl.*
 import org.jenkinsci.plugins.plaincredentials.impl.*
 
+println("Starting credentials.groovy script...")
+
 // Get Jenkins instance
 def instance = Jenkins.getInstance()
 def store = instance.getExtensionList('com.cloudbees.plugins.credentials.SystemCredentialsProvider')[0].getStore()
@@ -14,8 +16,14 @@ def awsAccessKeyId = System.getenv('AWS_ACCESS_KEY_ID')
 def awsSecretAccessKey = System.getenv('AWS_SECRET_ACCESS_KEY')
 def sshPrivateKey = System.getenv('SSH_PRIVATE_KEY')
 
-// Validate the variables before adding credentials
+// Debugging Output
+println("AWS_ACCESS_KEY_ID: " + (awsAccessKeyId ? "Loaded Successfully" : "Missing"))
+println("AWS_SECRET_ACCESS_KEY: " + (awsSecretAccessKey ? "Loaded Successfully" : "Missing"))
+println("SSH_PRIVATE_KEY: " + (sshPrivateKey ? "Loaded Successfully" : "Missing"))
+
+// Validate variables before adding credentials
 if (awsAccessKeyId && awsSecretAccessKey && sshPrivateKey) {
+    println("Adding AWS Credentials and SSH Private Key to Jenkins...")
 
     // AWS Access Key ID
     def awsAccessKey = new StringCredentialsImpl(
