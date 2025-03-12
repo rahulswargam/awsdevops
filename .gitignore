@@ -3,3 +3,4 @@
 docker/jenkins-server/credentials.env
 .idea/
 **/.DS_Store
+edureka/project1/terraform/.*
