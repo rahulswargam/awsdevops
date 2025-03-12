@@ -5,6 +5,11 @@ variable "aws_region" {
   default     = ""
 }
 
+variable "ami" {
+  description = "AMI ID for the EC2 instance"
+  type        = string
+}
+
 # SSH Key Pair Name
 variable "key_name" {
   description = "The name of the SSH Key Pair to use for EC2 Instance Access"
@@ -81,10 +86,14 @@ variable "user_data" {
   default     = ""
 }
 
-variable "project_name" {
-  description = "The name of the Project"
-  type        = string
-  default     = "Jenkins"
+variable "instance_count" {
+  description = "Number of instances to create"
+  type        = number
+}
+
+variable "instance_names" {
+  description = "List of instance names"
+  type        = list(string)
 }
 
 variable "environment" {
@@ -97,6 +106,6 @@ variable "tags" {
   description = "Key-value Pairs of Tags to Assign to AWS Resources"
   type        = map(string)
   default = {
-    createdBy   = "Terraform"
+    createdBy = "Terraform"
   }
 }
